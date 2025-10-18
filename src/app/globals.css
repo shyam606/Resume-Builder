@@ -2,16 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply bg-gray-50 text-gray-900;
+
+@layer base{
+   /* Style the scrollbar track */
+  ::-webkit-scrollbar-track {
+    background-color:rgb(218, 218, 218);
+  }
+
+  /* Style the scrollbar thumb */
+  ::-webkit-scrollbar-thumb {
+    background-color: gray;
+    border-radius: 2px;
+  }
+
+  /* Set the width of the scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 8px;
+  }
+
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
 }
 
-.my_input{
-  @apply border-none shadow-lg p-3 my-2
+@layer components{
+
+  .my_input{
+    @apply border-none shadow-lg dark:shadow-darkInputShadow p-3 my-2 dark:bg-transparent dark:text-gray-300
+  }
+  .my_input::placeholder{
+    @apply text-slate-500
+  }
+  .add_button{
+    @apply border border-blue-800 hover:!text-black hover:!border-blue-600 my-3 dark:bg-slate-700 dark:border-none hover:dark:!bg-slate-700
+    dark:text-white dark:hover:!text-gray-300
+  }
+  .my_text{
+    @apply text-gray-700 dark:text-gray-400
+  }
+  .skills{
+    @apply dark:bg-gray-700 dark:border-none dark:text-gray-300
+  }
 }
-.add_button{
-  @apply border border-blue-800 hover:!text-black hover:!border-blue-600 my-3
+.ant-collapse-header-text{
+  @apply text-black dark:text-slate-500 text-[1rem]
+}
+.ant-collapse>.ant-collapse-item >.ant-collapse-header .ant-collapse-arrow{
+  @apply dark:text-white
 }
 .ant-collapse>.ant-collapse-item >.ant-collapse-header{
   @apply py-0.5
+}
+.ant-picker .ant-picker-input >input::placeholder{
+  @apply text-slate-500
 }

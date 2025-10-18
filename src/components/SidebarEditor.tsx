@@ -34,7 +34,7 @@ export default function SidebarEditor() {
                     Reset Details
                 </Button>
             </div>
-            <div className="h-[50rem] overflow-auto shadow-lg rounded-lg py-3">
+            <div className="h-[50rem] overflow-auto shadow-lg rounded-lg py-3 bg-white dark:bg-gray-800">
                 <Collapse defaultActiveKey={['1', '2', '3']} ghost>
                     {/* Personal Info */}
                     <Panel header="Personal Info" key="1">
@@ -57,7 +57,7 @@ export default function SidebarEditor() {
                             <Button className='p-3 border border-gray-400' icon={<PlusOutlined />} onClick={() => { if (skillInput) { addSkill(skillInput); setSkillInput(''); } }} />
                         </div>
                         <div className="flex flex-wrap gap-2">
-                            {resume?.skills?.map(skill => (<Tag key={skill} closable onClose={() => removeSkill(skill)}>{skill}</Tag>))}
+                            {resume?.skills?.map(skill => (<Tag className='skills' key={skill} closable onClose={() => removeSkill(skill)}>{skill}</Tag>))}
                         </div>
                     </Panel>
 
@@ -118,8 +118,8 @@ export default function SidebarEditor() {
                         </Button>
                         <div className="space-y-2 mt-2">
                             {resume?.education?.map(p => (
-                                <div key={p?.id} className="flex justify-between bg-gray-200 p-2 rounded">
-                                    <div>{p?.institute}</div>
+                                <div key={p?.id} className="flex justify-between bg-gray-200 dark:bg-gray-700 dark:text-white p-2 rounded">
+                                    <div className='dark:text-gray-300'>{p?.institute}</div>
                                     <Tooltip title='Remove'>
                                         <Button type="text" icon={<MdDelete className='text-red-600' size={25} />} onClick={() => removeEducation(p.id)} />
                                     </Tooltip>
@@ -148,8 +148,8 @@ export default function SidebarEditor() {
                         }}>Add Project</Button>
                         <div className="space-y-2 mt-2">
                             {resume?.projects?.map(p => (
-                                <div key={p?.id} className="flex justify-between bg-gray-200 p-2 rounded">
-                                    <div>{p?.title}</div>
+                                <div key={p?.id} className="flex justify-between bg-gray-200 dark:bg-gray-700 dark:text-white p-2 rounded">
+                                    <div className='dark:text-gray-300'>{p?.title}</div>
                                     <Tooltip title='Remove'>
                                         <Button type="text" icon={<MdDelete className='text-red-600' size={25} />} onClick={() => removeProject(p?.id)} />
                                     </Tooltip>
@@ -180,17 +180,17 @@ export default function SidebarEditor() {
                             const achvDesc = achievementInput?.description?.trim();
                             const achvPlatform = achievementInput?.platform?.trim();
                             const achvDate = achievementInput?.date?.trim()
-                            if (achvTitle&&achvDesc&&achvPlatform&&achvDate) {
+                            if (achvTitle && achvDesc && achvPlatform && achvDate) {
                                 addAchievement({ id: Date.now().toString(), ...achievementInput });
                                 setAchievementInput({ title: '', description: '', date: '', platform: '' });
-                            }else{
+                            } else {
                                 toast.error("Achivement's all fields are required.")
                             }
                         }}>Add Achievement</Button>
                         <div className="space-y-2 mt-2">
                             {resume?.achievements?.map(a => (
-                                <div key={a?.id} className="flex justify-between bg-gray-100 p-2 rounded">
-                                    <div>{a?.title} - {a?.platform} ({a?.date})</div>
+                                <div key={a?.id} className="flex justify-between bg-gray-200 dark:bg-gray-700 dark:text-white p-2 rounded">
+                                    <div className='dark:text-gray-300'>{a?.title} - {a?.platform} ({a?.date})</div>
                                     <Tooltip title='Remove'>
                                         <Button type="text" icon={<MdDelete className='text-red-600' size={25} />} onClick={() => removeAchievement(a?.id)} />
                                     </Tooltip>

@@ -4,6 +4,7 @@ import "antd/dist/reset.css";
 import 'react-toastify/dist/ReactToastify.css';
 import { ResumeProvider } from "../context/ResumeContext";
 import { ToastContainer } from "react-toastify";
+import { ThemeProvider } from "@/context/ThemeContext";
 
 export const metadata: Metadata = {
   title: "Resume Builder",
@@ -18,8 +19,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ResumeProvider>{children}</ResumeProvider>
-        <ToastContainer closeOnClick={true} autoClose={2000} stacked />
+        <ThemeProvider>
+          <ResumeProvider>{children}</ResumeProvider>
+          <ToastContainer closeOnClick={true} autoClose={2000} stacked />
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -1,13 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   important:true,
+  darkMode:'class',
   content: ['./src/**/*.{html,js,jsx,tsx,ts}'],
   theme: {
     extend: {
-      backgroundImage: {
-        'shining-gradient': 'linear-gradient(to bottom, #2d3748, #4a5568, #2d3748)', // Dark gray to a slightly lighter gray and back
-        'shining-indigo-gradient': 'linear-gradient(to bottom, #1f2937, #374151, #4f46e5)', // Darker base with a vibrant indigo shine
-      },
+      boxShadow:{
+        darkInputShadow: 'rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px'
+      }
     },
   },
   plugins: [],
