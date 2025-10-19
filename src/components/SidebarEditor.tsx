@@ -29,7 +29,7 @@ export default function SidebarEditor() {
     return (
         <>
             <div className="text-right mb-5">
-                <Button type="primary" size="small" onClick={() => handleReset()} className="shadow-lg bg-blue-900 outline-none border-none hover:!bg-blue-800
+                <Button type="primary" size="small" onClick={() => handleReset()} className="shadow-lg bg-indigo-600 outline-none border-none hover:!bg-blue-800
                     border-gray-700">
                     Reset Details
                 </Button>

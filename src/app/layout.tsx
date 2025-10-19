@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "antd/dist/reset.css";
-import 'react-toastify/dist/ReactToastify.css';
-import { ResumeProvider } from "../context/ResumeContext";
-import { ToastContainer } from "react-toastify";
-import { ThemeProvider } from "@/context/ThemeContext";
+import "react-toastify/dist/ReactToastify.css";
+import ClientLayout from "./ClientLayout";
 
 export const metadata: Metadata = {
   title: "Resume Builder",
@@ -18,11 +16,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        <ThemeProvider>
-          <ResumeProvider>{children}</ResumeProvider>
-          <ToastContainer closeOnClick={true} autoClose={2000} stacked />
-        </ThemeProvider>
+      <body suppressHydrationWarning={true}>
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );
