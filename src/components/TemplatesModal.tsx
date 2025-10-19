@@ -1,3 +1,4 @@
+'use client'
 import { Modal } from 'antd'
 import React from 'react'
 import templateImg1 from "../assets/images/Template1.png"
@@ -31,7 +32,6 @@ const TemplatesModal = ({
     return (
         <div>
             <Modal
-                // title='Select Template'
                 open={isModalOpen}
                 onCancel={() => setIsModalOpen(false)}
                 footer={false}

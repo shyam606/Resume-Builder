@@ -6,7 +6,7 @@ import SidebarEditor from '@/components/SidebarEditor';
 import TemplatesModal from '@/components/TemplatesModal';
 import ThemeToggler from '@/components/ThemeToggler';
 import { Button, Tooltip } from 'antd';
-import { Suspense, useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import { GrTemplate } from 'react-icons/gr';
 
 

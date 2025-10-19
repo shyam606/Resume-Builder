@@ -1,7 +1,6 @@
 'use client'
 import { useTheme } from "@/context/ThemeContext";
 import { Button, Tooltip } from "antd";
-import { MoonOutlined, SunOutlined } from '@ant-design/icons';
 import { FaRegMoon } from "react-icons/fa";
 import { IoSunnyOutline } from "react-icons/io5";
 

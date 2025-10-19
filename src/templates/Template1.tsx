@@ -1,9 +1,6 @@
 "use client";
 import { useResume } from '@/context/ResumeContext';
-import { Button, Tag } from 'antd';
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
-import { useRef } from 'react';
+import {  Tag } from 'antd';
 import { MailOutlined, PhoneOutlined, CheckCircleOutlined } from '@ant-design/icons';
 
 interface Template2Props {
@@ -12,16 +9,6 @@ interface Template2Props {
 export default function Template1({ previewRef }: Template2Props) {
     const { resume } = useResume();
 
-    const handleDownloadPDF = async () => {
-        if (!previewRef.current) return;
-        const canvas = await html2canvas(previewRef.current, { scale: 3 });
-        const imgData = canvas.toDataURL('image/png');
-        const pdf = new jsPDF('p', 'mm', 'a4');
-        const width = pdf.internal.pageSize.getWidth();
-        const height = (canvas.height * width) / canvas.width;
-        pdf.addImage(imgData, 'PNG', 0, 0, width, height);
-        pdf.save(`${resume.name.replace(/\s+/g, '_')}_Resume.pdf`);
-    };
 
     const SectionHeader = ({ title }: { title: string }) => (
         <h3 className="text-lg font-bold text-gray-800 dark:text-slate-400 uppercase tracking-wider mt-8 mb-2 pb-1 border-b border-gray-400">
@@ -98,13 +85,13 @@ export default function Template1({ previewRef }: Template2Props) {
             <section>
                 <SectionHeader title="Education" />
                 <div className="space-y-4">
-                    {resume.education.map((edu) => (
-                        <div key={edu.id}>
+                    {resume?.education?.map((edu) => (
+                        <div key={edu?.id}>
                             <div className="flex justify-between">
-                                <p className="font-semibold text-gray-700 dark:text-gray-300">{edu.degree}</p>
-                                <p className="text-gray-600 dark:text-slate-300 text-sm font-mono">{edu.year}</p>
+                                <p className="font-semibold text-gray-700 dark:text-gray-300">{edu?.degree}</p>
+                                <p className="text-gray-600 dark:text-slate-300 text-sm font-mono">{edu?.year}</p>
                             </div>
-                            <p className="my_text text-sm">{edu.institute}</p>
+                            <p className="my_text text-sm">{edu?.institute}</p>
                         </div>
                     ))}
                 </div>
@@ -127,31 +114,31 @@ export default function Template1({ previewRef }: Template2Props) {
             <section>
                 <SectionHeader title="Achievements" />
                 <div className="space-y-4">
-                    {resume.achievements.map((a) => (
-                        <div key={a.id}>
+                    {resume?.achievements.map((a) => (
+                        <div key={a?.id}>
                             <div className="flex justify-between">
-                                <h4 className="font-semibold text-gray-700 dark:text-gray-300 text-sm">{a.title}</h4>
-                                <p className="text-gray-500 dark:text-slate-300 text-xs font-mono">{a.date}</p>
+                                <h4 className="font-semibold text-gray-700 dark:text-gray-300 text-sm">{a?.title}</h4>
+                                <p className="text-gray-500 dark:text-slate-300 text-xs font-mono">{a?.date}</p>
                             </div>
-                            <p className="my_text mt-1 text-sm">{a.description}</p>
-                            <p className="text-gray-500 text-xs mt-1 italic">{a.platform}</p>
+                            <p className="my_text mt-1 text-sm">{a?.description}</p>
+                            <p className="text-gray-500 text-xs mt-1 italic">{a?.platform}</p>
                         </div>
                     ))}
                 </div>
             </section>
 
             {/* ✅ Verified Achievements */}
-            {resume.verifiedAchievements && resume.verifiedAchievements.length > 0 && (
+            {resume?.verifiedAchievements && resume?.verifiedAchievements?.length > 0 && (
                 <section>
                     <SectionHeader title="Verified Achievements" />
                     <div className="space-y-4">
-                        {resume.verifiedAchievements.map((item, index) => (
+                        {resume?.verifiedAchievements?.map((item, index) => (
                             <div key={index} className="flex justify-between items-start">
                                 <div>
-                                    <h4 className="font-semibold text-gray-700 dark:text-gray-300 text-sm">{item.title}</h4>
-                                    <p className="text-gray-600 dark:text-gray-400 text-xs">{item.source}</p>
+                                    <h4 className="font-semibold text-gray-700 dark:text-gray-300 text-sm">{item?.title}</h4>
+                                    <p className="text-gray-600 dark:text-gray-400 text-xs">{item?.source}</p>
                                 </div>
-                                {item.verified && (
+                                {item?.verified && (
                                     <Tag
                                         icon={<CheckCircleOutlined />}
                                         color="success"

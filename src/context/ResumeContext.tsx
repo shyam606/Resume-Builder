@@ -5,7 +5,7 @@ import React, { createContext, useContext, useState } from 'react';
 export type Project = { id: string; title: string; desc: string; link?: string; tech: string[] };
 export type Education = { id: string; institute: string; degree: string; year: string };
 export type Achievement = { id: string; title: string; description: string; date: string; platform?: string };
-export type verifiedAchievement={title:string,source:string,verified:boolean}
+export type verifiedAchievement = { title: string, source: string, verified: boolean }
 
 export interface ResumeData {
   name: string;
@@ -17,13 +17,13 @@ export interface ResumeData {
   projects: Project[];
   education: Education[];
   achievements: Achievement[];
-  verifiedAchievements:verifiedAchievement[]
+  verifiedAchievements: verifiedAchievement[]
 }
 
 
 interface ResumeContextType {
   resume: ResumeData;
-  updateField: (field: keyof ResumeData, value: any) => void;
+  updateField: <K extends keyof ResumeData>(field: K, value: ResumeData[K]) => void;
   addSkill: (skill: string) => void;
   removeSkill: (skill: string) => void;
   addProject: (project: Project) => void;
@@ -45,7 +45,7 @@ const defaultData: ResumeData = {
   projects: [{ id: 'p1', title: 'Portfolio', desc: 'Personal portfolio site', tech: ['React', 'Next.js'], link: 'https://shyamdev65.vercel.app/' }],
   education: [{ id: 'e1', institute: 'ABC University', degree: 'B.Tech CS', year: '2022' }],
   achievements: [{ id: 'a1', title: 'Hackathon Winner', description: 'Won 1st place in XYZ hackathon', date: '2024-01', platform: 'XYZ Platform' }],
-  verifiedAchievements: [{ title: "Frontend Internship at X", source: "Internshala", verified: true },{ title: "React Hackathon Winner", source: "Devfolio", verified: true },]
+  verifiedAchievements: [{ title: "Frontend Internship at X", source: "Internshala", verified: true }, { title: "React Hackathon Winner", source: "Devfolio", verified: true },]
 };
 
 
@@ -56,7 +56,9 @@ export const ResumeProvider = ({ children }: { children: React.ReactNode }) => {
   const [resume, setResume] = useState<ResumeData>(defaultData);
 
 
-  const updateField = (field: keyof ResumeData, value: any) => setResume(prev => ({ ...prev, [field]: value }));
+  const updateField = <K extends keyof ResumeData>(field: K, value: ResumeData[K]) => {
+    setResume((prev) => ({ ...prev, [field]: value }));
+  };
   const addSkill = (skill: string) => setResume(prev => ({ ...prev, skills: [...prev.skills, skill] }));
   const removeSkill = (skill: string) => setResume(prev => ({ ...prev, skills: prev.skills.filter(s => s !== skill) }));
   const addProject = (project: Project) => setResume(prev => ({ ...prev, projects: [...prev.projects, project] }));

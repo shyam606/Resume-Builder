@@ -1,9 +1,8 @@
-// components/SidebarEditor.tsx
 "use client";
 import { Collapse, Input, Button, Tag, Tooltip, DatePicker } from 'antd';
 import { useState } from 'react';
 import { useResume } from '@/context/ResumeContext';
-import { PlusOutlined, DeleteOutlined } from '@ant-design/icons';
+import { PlusOutlined } from '@ant-design/icons';
 import { MdDelete } from 'react-icons/md';
 import { toast } from 'react-toastify';
 import dayjs from 'dayjs';
