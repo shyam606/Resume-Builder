@@ -38,9 +38,9 @@ export default function ResumePreview({ isSelectTemp }: { isSelectTemp: number }
             </div>
             {
                 isSelectTemp === 1 ?
-                    <Template1 previewRef={previewRef} />
+                    <Template1 previewRef={previewRef} />   //single column
                     :
-                    <Template2 previewRef={previewRef} />
+                    <Template2 previewRef={previewRef} />  // double column
             }
         </div>
     );

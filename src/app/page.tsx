@@ -24,7 +24,7 @@ export default function HomePage() {
     }, 1000)
   }, [])
   return (
-    <main className="min-h-screen p-6 bg-gray-50 dark:bg-gray-900 transition-colors duration-500">
+    <main className=" p-6 bg-gray-50 dark:bg-gray-900 transition-colors duration-500">
       {
         !isShow ? <Loader /> :
           <>

@@ -8,13 +8,13 @@ import { IoCloseCircleSharp } from 'react-icons/io5'
 
 const Images = [
     {
-        title: 'Tow Columns',
-        img: templateImg2,
+        title: 'Single Column',
+        img: templateImg1,
         id:1
     },
     {
-        title: 'Single Column',
-        img: templateImg1,
+        title: 'Two Column',
+        img: templateImg2,
         id:2
     },
 ]
